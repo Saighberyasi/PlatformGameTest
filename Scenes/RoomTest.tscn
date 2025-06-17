@@ -23,5 +23,3 @@ shape = SubResource("RectangleShape2D_nfdmd")
 
 [node name="Player" parent="." instance=ExtResource("2_nfdmd")]
 position = Vector2(583, 368)
-
-[node name="Teste" type="Node" parent="."]

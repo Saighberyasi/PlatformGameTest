@@ -3,37 +3,51 @@ using System;
 
 public partial class Movement : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 velocity = Velocity;
+    [Export] private float _moveSpeed = 300.0f;
+    [Export] private float _jumpVelocity = -450.0f;
+    [Export] private float _gravityBase = 1600f;
+    [Export] private float _gravityMultiplier = 6f;
+    [Export] private float _timeToStartFalling = 0.15f;
+    [Export] private int _maxJumps = 2;
+    private float _timeToStartFallingCounter;
+    private int _jumpsLeft;
+    private float _gravity;
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 velocity = Velocity;
+    
+        if (!IsOnFloor())
+        {
+            velocity.Y += _gravity * (float)delta;
+            if (Input.IsActionJustReleased("Jump"))
+            {
+                _gravity = _gravityBase * _gravityMultiplier;
+            }
+        }
 
-		// Add the gravity.
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
+        if (IsOnFloor())
+        {
+            _gravity = _gravityBase;
+            _jumpsLeft = _maxJumps;
+            _timeToStartFallingCounter = _timeToStartFalling;
+            if (Input.IsActionJustPressed("Jump") && _jumpsLeft > 0)
+            {
+                velocity.Y += _jumpVelocity;
+                _jumpsLeft--;
+            }
+        }
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
+        Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        if (direction != Vector2.Zero)
+        {
+            velocity.X = direction.X * _moveSpeed;
+        }
+        else
+        {
+            velocity.X = Mathf.MoveToward(Velocity.X, 0, _moveSpeed);
+        }
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
-
-		Velocity = velocity;
-		MoveAndSlide();
-	}
+        Velocity = velocity;
+        MoveAndSlide();
+    }
 }
