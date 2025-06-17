@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://drak87m1ddqmd"]
+
+[ext_resource type="Script" uid="uid://cu14xswquuq23" path="res://Objs/Movement.cs" id="1_xbyt5"]
+
+[sub_resource type="Gradient" id="Gradient_epccw"]
+offsets = PackedFloat32Array(0, 0.0454545)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xbyt5"]
+gradient = SubResource("Gradient_epccw")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo1ah"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xbyt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_xbyt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_jo1ah")

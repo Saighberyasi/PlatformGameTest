@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://be3xwlcinv2a3"]
+
+[ext_resource type="Texture2D" uid="uid://bie5je86r3kux" path="res://Assets/icon.svg" id="1_u3lpk"]
+[ext_resource type="PackedScene" uid="uid://drak87m1ddqmd" path="res://Objs/Player.tscn" id="2_nfdmd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdmd"]
+size = Vector2(1151, 126)
+
+[node name="RoomTest" type="Node2D"]
+
+[node name="FloorBody" type="RigidBody2D" parent="."]
+position = Vector2(576, 585)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody"]
+position = Vector2(-0.499985, 0)
+scale = Vector2(8.99219, 1)
+texture = ExtResource("1_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody"]
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="Player" parent="." instance=ExtResource("2_nfdmd")]
+position = Vector2(583, 368)
