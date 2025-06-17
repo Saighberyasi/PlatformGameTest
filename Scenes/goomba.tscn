@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8vd1wffp1xej"]
+
+[ext_resource type="Script" uid="uid://b6vbi6dn5hoob" path="res://Objs/GoombaMovement.cs" id="1_ugtcb"]
+
+[sub_resource type="Gradient" id="Gradient_gtbuv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ugtcb"]
+gradient = SubResource("Gradient_gtbuv")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqi4q"]
+size = Vector2(64, 64)
+
+[node name="Goomba" type="CharacterBody2D"]
+script = ExtResource("1_ugtcb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_ugtcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wqi4q")
