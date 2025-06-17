@@ -19,6 +19,10 @@ config/icon="res://Assets/icon.svg"
 
 project/assembly_name="Jogo Plataforma Foda"
 
+[global_group]
+
+Walls=""
+
 [input]
 
 Jump={

@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://be3xwlcinv2a3"]
+[gd_scene load_steps=8 format=3 uid="uid://be3xwlcinv2a3"]
 
 [ext_resource type="Texture2D" uid="uid://bie5je86r3kux" path="res://Assets/icon.svg" id="1_u3lpk"]
 [ext_resource type="PackedScene" uid="uid://drak87m1ddqmd" path="res://Objs/Player.tscn" id="2_nfdmd"]
+[ext_resource type="PackedScene" uid="uid://b8vd1wffp1xej" path="res://Scenes/goomba.tscn" id="3_hu64l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdmd"]
-size = Vector2(1151, 126)
+size = Vector2(2176.5, 126)
+
+[sub_resource type="Gradient" id="Gradient_hu64l"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hyhx1"]
+gradient = SubResource("Gradient_hu64l")
+fill_from = Vector2(0.513761, 0.518349)
+fill_to = Vector2(0.5, 0.518349)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2tix"]
+size = Vector2(64, 127)
 
 [node name="RoomTest" type="Node2D"]
 
@@ -14,12 +25,56 @@ mass = 0.001
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FloorBody"]
-position = Vector2(-0.499985, 0)
-scale = Vector2(8.99219, 1)
+position = Vector2(512.5, 0)
+scale = Vector2(17.0078, 1)
 texture = ExtResource("1_u3lpk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody"]
+position = Vector2(512.75, 0)
 shape = SubResource("RectangleShape2D_nfdmd")
 
 [node name="Player" parent="." instance=ExtResource("2_nfdmd")]
-position = Vector2(583, 368)
+position = Vector2(2040, 233)
+
+[node name="FloorBody2" type="RigidBody2D" parent="."]
+position = Vector2(1798, 386)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody2"]
+position = Vector2(512.5, 0)
+scale = Vector2(17.0078, 1)
+texture = ExtResource("1_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody2"]
+position = Vector2(512.75, 0)
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="Goomba" parent="." instance=ExtResource("3_hu64l")]
+position = Vector2(2315, 291)
+
+[node name="WallBody" type="RigidBody2D" parent="." groups=["Walls"]]
+position = Vector2(3367, 291)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="WallBody"]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1.98438)
+texture = SubResource("GradientTexture2D_hyhx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody"]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_w2tix")
+
+[node name="WallBody2" type="RigidBody2D" parent="."]
+position = Vector2(1254, 291)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="WallBody2"]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1.98438)
+texture = SubResource("GradientTexture2D_hyhx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBody2"]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_w2tix")

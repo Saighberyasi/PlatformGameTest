@@ -4,9 +4,9 @@ using System;
 public partial class Movement : CharacterBody2D
 {
     [Export] private float _moveSpeed = 300.0f;
-    [Export] private float _jumpVelocity = -450.0f;
-    [Export] private float _gravityBase = 1600f;
-    [Export] private float _gravityMultiplier = 6f;
+    [Export] private float _jumpVelocity = -600.0f;
+    [Export] private float _gravityBase = 800f;
+    [Export] private float _gravityMultiplier = 3f;
     [Export] private float _timeToStartFalling = 0.15f;
     [Export] private int _maxJumps = 2;
     private float _timeToStartFallingCounter;
