@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://7rp4j7qtrujy"]
+
+[ext_resource type="Texture2D" uid="uid://bie5je86r3kux" path="res://Assets/icon.svg" id="1_03b8v"]
+[ext_resource type="Script" uid="uid://xqo7ao7rch5b" path="res://Objs/Traps/Cannon.cs" id="1_8koha"]
+[ext_resource type="PackedScene" uid="uid://bl6e2o0fgvgs4" path="res://Objs/Misc/Cannonball.tscn" id="3_6gwsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03b8v"]
+
+[node name="Cannon" type="StaticBody2D" node_paths=PackedStringArray("_cannonBall")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8koha")
+_cannonBall = NodePath("Cannonball")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.823529, 0, 0, 1)
+texture = ExtResource("1_03b8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_03b8v")
+
+[node name="Cannonball" parent="." instance=ExtResource("3_6gwsx")]
+visible = false
+_moveSpeed = 1000.0
+_lifeTime = 1.4
