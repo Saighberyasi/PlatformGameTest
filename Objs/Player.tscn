@@ -14,6 +14,8 @@ size = Vector2(21.3333, 41.6667)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xbyt5")
+_secondJumpMultiplier = 2.0
+_gravityBase = 600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -30.5)
@@ -26,5 +28,6 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_jo1ah")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true

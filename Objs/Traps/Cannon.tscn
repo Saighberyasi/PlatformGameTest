@@ -22,5 +22,4 @@ shape = SubResource("RectangleShape2D_03b8v")
 
 [node name="Cannonball" parent="." instance=ExtResource("3_6gwsx")]
 visible = false
-_moveSpeed = 1000.0
 _lifeTime = 1.4

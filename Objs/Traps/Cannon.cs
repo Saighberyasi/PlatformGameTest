@@ -3,7 +3,7 @@ using System;
 
 public partial class Cannon : StaticBody2D
 {
-    [Export]private RigidBody2D _cannonBall;
+    [Export]private Cannonball _cannonBall;
     [Export] private float _shotCooldown = 1.5f;
     private float _shotTimer;
     

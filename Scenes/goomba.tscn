@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8vd1wffp1xej"]
+[gd_scene load_steps=5 format=3 uid="uid://cbbg10jghdtv4"]
 
 [ext_resource type="Script" uid="uid://b6vbi6dn5hoob" path="res://Objs/GoombaMovement.cs" id="1_ugtcb"]
 

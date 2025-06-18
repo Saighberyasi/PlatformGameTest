@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://be3xwlcinv2a3"]
+
+[ext_resource type="PackedScene" uid="uid://7rp4j7qtrujy" path="res://Objs/Traps/Cannon.tscn" id="2_hu64l"]
+[ext_resource type="PackedScene" uid="uid://drak87m1ddqmd" path="res://Objs/Player.tscn" id="2_nfdmd"]
+[ext_resource type="PackedScene" uid="uid://cbbg10jghdtv4" path="res://Scenes/goomba.tscn" id="3_hu64l"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u3lpk"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfdmd"]
+size = Vector2(1151, 126)
+
+[node name="RoomTest" type="Node2D"]
+
+[node name="FloorBody" type="StaticBody2D" parent="."]
+position = Vector2(576, 585)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody"]
+position = Vector2(-1.99998, -0.499985)
+scale = Vector2(11.6, 1.31)
+texture = SubResource("PlaceholderTexture2D_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody"]
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="Player" parent="." instance=ExtResource("2_nfdmd")]
+position = Vector2(582, 368)
+collision_mask = 129
+platform_floor_layers = 4294967167
+platform_wall_layers = 128
+_gravityBase = 2500.0
+
+[node name="FloorBody2" type="StaticBody2D" parent="."]
+position = Vector2(548, 485)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody2"]
+position = Vector2(-1.99998, -0.499985)
+scale = Vector2(0.48, 0.663085)
+texture = SubResource("PlaceholderTexture2D_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody2"]
+scale = Vector2(0.0400025, 0.506171)
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="FloorBody3" type="StaticBody2D" parent="."]
+position = Vector2(643, 486)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody3"]
+position = Vector2(-1.99998, -0.499985)
+scale = Vector2(0.48, 0.663085)
+texture = SubResource("PlaceholderTexture2D_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody3"]
+scale = Vector2(0.0400025, 0.506171)
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="FloorBody4" type="StaticBody2D" parent="."]
+position = Vector2(742, 486)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody4"]
+position = Vector2(-1.99998, -0.499985)
+scale = Vector2(0.48, 0.663085)
+texture = SubResource("PlaceholderTexture2D_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody4"]
+scale = Vector2(0.0400025, 0.506171)
+shape = SubResource("RectangleShape2D_nfdmd")
+
+[node name="Cannon" parent="." instance=ExtResource("2_hu64l")]
+position = Vector2(932, 370)
+
+[node name="Goomba" parent="." instance=ExtResource("3_hu64l")]
+position = Vector2(94, 484)
+
+[node name="FloorBody5" type="StaticBody2D" parent="."]
+position = Vector2(15, 233)
+collision_layer = 129
+collision_mask = 129
+
+[node name="Sprite2D" type="Sprite2D" parent="FloorBody5"]
+position = Vector2(-3, 131.154)
+scale = Vector2(0.48, 3.10308)
+texture = SubResource("PlaceholderTexture2D_u3lpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorBody5"]
+position = Vector2(-1.00003, 131.654)
+scale = Vector2(0.0400025, 2.36876)
+shape = SubResource("RectangleShape2D_nfdmd")
